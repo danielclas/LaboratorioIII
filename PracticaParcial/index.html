@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" type="module"></script>
+    <link rel = "stylesheet" type = "text/css" href="styles/styles.css"/>
+    <title>PracticaParcial</title>
+</head>
+<body>
+    <h1>LLena el formulario de alta</h1>
+
+    <div id="formContainer">
+        <form id="form" action="#">
+            <label for="titulo">TITULO: </label>
+            <input type="text" name="titulo" placeholder="Titulo">
+            <br>
+            <label for="transaccion">TRANSANCCION: </label>
+            <br>
+            <label for="venta">VENTA</label>
+            <input type="checkbox" name="venta" value="venta">
+            <label for="alquiler">ALQUILER</label>
+            <input type="checkbox" name="alquiler" value="alquiler">
+            <br>
+            <label for="descripcion">DESCRIPCION: </label>
+            <input type="text" name="descripcion" placeholder="Descripcion">
+            <br>
+            <label for="precio">PRECIO:</label>
+            <input type="number" name="precio" placeholder="Precio">
+            <br>
+            <label for="num_wc">CANTIDAD DE BAÑOS: </label>
+            <input type="number" name="num_wc" placeholder="Baños">
+            <br>
+            <label for="num_estacionamiento">CANTIDAD DE AUTOS: </label>
+            <input type="number" name="num_estacionamiento" placeholder="Autos">
+            <br>
+            <label for="num_dormitorio">CANTIDAD DE DORMITORIOS: </label>
+            <input type="number" name="num_dormitorio" placeholder="Dormitorios">
+            <br>
+        </form>
+    </div>
+
+    <div id="tableContainer">
+        <button id="btnGuardar">Guardar</button>
+        <button id="btnEliminar">Eliminar</button>
+        <button id="btnCancelar">Cancelar</button>
+    </div>
+
+</body>
+</html>
