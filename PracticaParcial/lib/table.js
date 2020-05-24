@@ -18,7 +18,7 @@ export class Table{
 
         keys.forEach( k => {
             let th = document.createElement('TH');
-            th.innerText = k;
+            th.innerText = this.normalizeHeader(k);
             thead.appendChild(th);
         });
 
@@ -44,7 +44,10 @@ export class Table{
         }
 
         this.emptyTable();
-        this.loadTable(data);
+        if(data.data){
+            this.loadTable(data);
+        }
+        
         container.appendChild(table);
 
         table.onclick = this.getSelectedRow;
@@ -83,14 +86,13 @@ export class Table{
         });        
     }    
 
-    static getKeys(data){
-
+    static getKeys(data){        
         let temp = data.data[0];
 
         for(let key in temp){
             keys.push(key);
         }
-        
+                    
     }
 
     static loadTable(data){
@@ -105,5 +107,15 @@ export class Table{
                 row.appendChild(td);
             });            
         });
+    }
+
+    static normalizeHeader(text){
+
+        let index = text.indexOf('_');
+        let temp = index != -1 ? text.substring(index+1) : text;
+
+        temp = temp[0].toUpperCase() + temp.substring(1);
+
+        return temp;
     }
 }

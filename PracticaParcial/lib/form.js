@@ -17,10 +17,11 @@ export class Form{
             if(input.type == 'radio'){
                 if(input.checked){
                     value = input.value;
-                    obj[input.name] = input.value;
+                    if(obj) obj[input.name] = input.value;
                 }
             }else{
-                obj[input.name] = input.value;
+                if(!this.validInput(input)) obj = undefined;                    
+                if(obj) obj[input.name] = input.value;
             }               
         });
 
@@ -39,5 +40,14 @@ export class Form{
             }
         });
     }    
-    
+
+    static validInput(input){
+
+        if(input.type == 'number' && (isNaN(input.value) || input.value < 0))            
+                return false;
+        else if(input.type == 'text' && input.value == "")
+                return false;        
+
+        return true;
+    }    
 }

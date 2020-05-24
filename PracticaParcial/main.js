@@ -1,6 +1,7 @@
 import {Request} from './lib/request.js';
 import {Table} from './lib/table.js';
 import {Form} from './lib/form.js';
+import {Notify} from './lib/notify.js';
 
 Request.ajaxGet('traer');
 
@@ -21,10 +22,15 @@ form.onsubmit = (e) => e.preventDefault();
 function saveToServer(){
 
     let obj = Form.formToObject();
-    let json = JSON.stringify(obj);
-    let resource = obj.id == "" ? 'alta' : 'modificar';
 
-    Request.ajaxPost(json, resource, 'application/json');
+    if(!obj){
+        Notify.invalidForm();
+        console.log("obj undefined"+obj);
+    }else{
+        let json = JSON.stringify(obj);
+        let resource = obj.id == "" ? 'alta' : 'modificar';
+        Request.ajaxPost(json, resource, 'application/json');
+    }      
 }
 
 function deleteEntry(){

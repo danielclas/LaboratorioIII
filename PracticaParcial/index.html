@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>Llena el formulario de alta</h1>
-    <div id="formContainer">
         <form id="form" action="#">
                 <input type="hidden" name="id" id="idinput">
 
@@ -28,25 +27,23 @@
                 <input type="text" name="descripcion" placeholder="Descripcion">
 
                 <label for="precio">Precio:</label>
-                <input type="number" name="precio" placeholder="Precio">
+                <input type="number" name="precio" min=0 placeholder="Precio">
 
                 <label for="num_wc">Cantidad de baños: </label>
-                <input type="number" name="num_wc" placeholder="Baños">
+                <input type="number" name="num_wc" min=0 placeholder="Baños">
 
                 <label for="num_estacionamiento">Cantidad de autos: </label>                
-                <input type="number" name="num_estacionamiento" placeholder="Autos">
+                <input type="number" name="num_estacionamiento" min=0 placeholder="Autos">
 
                 <label for="num_dormitorio">Cantidad de dormitorios: </label>
-                <input type="number" name="num_dormitorio" placeholder="Dormitorios">
+                <input type="number" name="num_dormitorio" min=0 placeholder="Dormitorios">
                 <br>
         </form>
-    </div>
 
     <div id="tableContainer">
         <button id="saveBtn">Guardar</button>
         <button id="deleteBtn">Eliminar</button>
         <button id="cancelBtn">Cancelar</button>
     </div>
-
 </body>
 </html>

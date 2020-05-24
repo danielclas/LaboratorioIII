@@ -5,7 +5,7 @@
         "transaccion": "venta",
         "descripcion": "Desc modificada",
         "precio": "45000000",
-        "num_wc": "3",
+        "num_wc": "4",
         "num_estacionamiento": "1",
         "num_dormitorio": "8",
         "active": "true"
@@ -20,15 +20,5 @@
         "num_estacionamiento": "4",
         "num_dormitorio": "7",
         "active": "true"
-    },
-    {
-        "id": "3",
-        "titulo": "",
-        "descripcion": "",
-        "precio": "",
-        "num_wc": "",
-        "num_estacionamiento": "",
-        "num_dormitorio": "",
-        "active": "false"
     }
 ]
