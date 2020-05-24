@@ -34,12 +34,12 @@ th{
 tr{
     border:none;
     opacity: 0.8;
-    transition: 0.3s;
+    transition: 0.05s;
 }
 
 tr:hover {    
-    border-top: solid 1px rgb(63, 81, 181);
-    border-bottom: solid 1px rgb(63, 81, 181);
+    border-top: solid 2px rgb(63, 81, 181);
+    border-bottom: solid 2px rgb(63, 81, 181);
     opacity: 1;
 }
 

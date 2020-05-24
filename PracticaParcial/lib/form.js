@@ -43,7 +43,7 @@ export class Form{
 
     static validInput(input){
 
-        if(input.type == 'number' && (isNaN(input.value) || input.value < 0))            
+        if(input.type == 'number' && (isNaN(input.value) || input.value < 0 || input.value == ""))            
                 return false;
         else if(input.type == 'text' && input.value == "")
                 return false;        
