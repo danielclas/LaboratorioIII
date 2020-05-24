@@ -12,8 +12,8 @@ export class Table{
 
         let temp = document.createElement('table');
         temp.id = "table";
-        let thead = temp.createTHead();
 
+        let thead = temp.createTHead();
         let tbody = temp.createTBody();
 
         keys.forEach( k => {
@@ -23,6 +23,14 @@ export class Table{
         });
 
         table = temp;
+    }
+
+    static keys(){
+        return keys;
+    }
+
+    static selectedId(){
+        return selectedRow[0].innerHTML;
     }
 
     static paintTable(data){
@@ -37,33 +45,38 @@ export class Table{
 
         this.emptyTable();
         this.loadTable(data);
-
         container.appendChild(table);
 
         table.onclick = this.getSelectedRow;
     }
 
     static getSelectedRow(e){        
-        selectedRow = e.srcElement.parentNode.children[0].innerHTML;
-        console.log(e.srcElement.parentNode.children);
-        console.log(selectedRow);
-        // this.populateForm();
-    }
 
-    static populateForm(){
+        selectedRow = e.srcElement.parentNode.children;        
 
-        // let childNode = form.childNodes;
-        // let inputs = [];
+        let inputs = document.querySelectorAll('input');
 
-        // childNodes.forEach( c => {
-        //     if(c && c.tagName == "INPUT"){
-        //         inputs.push(c);
-        //     }
-        // });
+        inputs.forEach( input => {
+            let index = keys.indexOf(input.name);
+            let value = selectedRow[index].innerHTML;
 
-        
-        
-    }
+            if(input.type=='radio'){
+                if(input.value == value) input.checked = true;;
+            }else{
+                if(value[0]=='$'){
+                    let temp = "";
+                    
+                    for(let i = 0 ; i<value.length ; i++){
+                        if(!isNaN(value[i])) temp+=value[i];
+                    }
+    
+                    value = parseInt(temp);
+                }
+                input.value = value;
+            }
+            
+        });        
+    }    
 
     static getKeys(data){
 

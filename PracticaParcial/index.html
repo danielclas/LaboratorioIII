@@ -9,18 +9,21 @@
 </head>
 <body>
     <h1>LLena el formulario de alta</h1>
-
+    TODO: Revisar baja
     <div id="formContainer">
         <form id="form" action="#">
+            <input type="hidden" name="id">
             <label for="titulo">TITULO: </label>
             <input type="text" name="titulo" placeholder="Titulo">
             <br>
-            <label for="transaccion">TRANSANCCION: </label>
+            <label>TRANSANCCION: </label>
             <br>
+            <fieldset>
             <label for="venta">VENTA</label>
-            <input type="checkbox" name="venta" value="venta">
+            <input type="radio" name="transaccion" value="venta">
             <label for="alquiler">ALQUILER</label>
-            <input type="checkbox" name="alquiler" value="alquiler">
+            <input type="radio" name="transaccion" value="alquiler">
+            </fieldset>
             <br>
             <label for="descripcion">DESCRIPCION: </label>
             <input type="text" name="descripcion" placeholder="Descripcion">

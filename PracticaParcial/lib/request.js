@@ -21,8 +21,20 @@ export class Request{
 
     }
 
-    static ajaxPost(body){
+    static ajaxPost(body, resource, contentType){
+        let xhr = new XMLHttpRequest();
 
+        xhr.onreadystatechange = () => {
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    this.ajaxGet('traer');
+                }
+            }
+        }
+
+        xhr.open('POST', route + resource);
+        xhr.setRequestHeader('content-type',contentType);
+        xhr.send(body);
     }
 
     static fetchGet(){
