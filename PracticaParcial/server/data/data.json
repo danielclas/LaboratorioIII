@@ -1,1 +1,34 @@
-[{"id":"1","titulo":"Titulo modificado","transaccion":"venta","descripcion":"Casa en la montaña con excelente vista, acabados de lujo a un precio irresistible","precio":"45000000","num_wc":"3","num_estacionamiento":"1","num_dormitorio":"8","active":"true"},{"id":"2","titulo":"Titulo modificado 2","transaccion":"alquiler","descripcion":"Mansion de lujo con helipuerto a un precio irresistible. Ideal para transportarse facilmente","precio":"53100000","num_wc":"4","num_estacionamiento":"4","num_dormitorio":"7","active":"true"}]
+[
+    {
+        "id": "1",
+        "titulo": "Titulo modificado 3",
+        "transaccion": "venta",
+        "descripcion": "Desc modificada",
+        "precio": "45000000",
+        "num_wc": "3",
+        "num_estacionamiento": "1",
+        "num_dormitorio": "8",
+        "active": "true"
+    },
+    {
+        "id": "2",
+        "titulo": "Titulo modificado 2",
+        "transaccion": "alquiler",
+        "descripcion": "Mansion de lujo con helipuerto a un precio irresistible. Ideal para transportarse facilmente",
+        "precio": "53100000",
+        "num_wc": "4",
+        "num_estacionamiento": "4",
+        "num_dormitorio": "7",
+        "active": "true"
+    },
+    {
+        "id": "3",
+        "titulo": "",
+        "descripcion": "",
+        "precio": "",
+        "num_wc": "",
+        "num_estacionamiento": "",
+        "num_dormitorio": "",
+        "active": "false"
+    }
+]

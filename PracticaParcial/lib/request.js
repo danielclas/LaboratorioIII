@@ -11,6 +11,7 @@ export class Request{
           if(xhr.readyState == 4){
               if(xhr.status == 200){
                   let data = JSON.parse(xhr.responseText);
+                  console.log(data);
                   Table.paintTable(data);         
               }
           }  
@@ -18,7 +19,6 @@ export class Request{
 
         xhr.open('GET', route + resource);
         xhr.send();
-
     }
 
     static ajaxPost(body, resource, contentType){
@@ -33,7 +33,7 @@ export class Request{
         }
 
         xhr.open('POST', route + resource);
-        xhr.setRequestHeader('content-type',contentType);
+        xhr.setRequestHeader('Content-Type',contentType);
         xhr.send(body);
     }
 

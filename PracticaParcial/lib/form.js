@@ -5,7 +5,7 @@ let keys = Table.keys();
 
 export class Form{
 
-    static formToJson(){
+    static formToObject(){
 
         let obj = {};
         let inputs = document.querySelectorAll('input');
@@ -24,8 +24,20 @@ export class Form{
             }               
         });
 
-        return JSON.stringify(obj);
+        return obj;
     }
-    
+
+    static cleanForm(){
+
+        let inputs = document.querySelectorAll('input');
+
+        inputs.forEach(input=>{
+            if(input.type == 'radio'){
+                if(input.checked) input.checked = false;
+            }else{
+                input.value = input.type == 'number' ? 0 : "";
+            }
+        });
+    }    
     
 }

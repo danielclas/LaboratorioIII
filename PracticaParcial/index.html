@@ -8,45 +8,44 @@
     <title>PracticaParcial</title>
 </head>
 <body>
-    <h1>LLena el formulario de alta</h1>
-    TODO: Revisar baja
+    <h1>Llena el formulario de alta</h1>
     <div id="formContainer">
         <form id="form" action="#">
-            <input type="hidden" name="id">
-            <label for="titulo">TITULO: </label>
-            <input type="text" name="titulo" placeholder="Titulo">
-            <br>
-            <label>TRANSANCCION: </label>
-            <br>
-            <fieldset>
-            <label for="venta">VENTA</label>
-            <input type="radio" name="transaccion" value="venta">
-            <label for="alquiler">ALQUILER</label>
-            <input type="radio" name="transaccion" value="alquiler">
-            </fieldset>
-            <br>
-            <label for="descripcion">DESCRIPCION: </label>
-            <input type="text" name="descripcion" placeholder="Descripcion">
-            <br>
-            <label for="precio">PRECIO:</label>
-            <input type="number" name="precio" placeholder="Precio">
-            <br>
-            <label for="num_wc">CANTIDAD DE BAÑOS: </label>
-            <input type="number" name="num_wc" placeholder="Baños">
-            <br>
-            <label for="num_estacionamiento">CANTIDAD DE AUTOS: </label>
-            <input type="number" name="num_estacionamiento" placeholder="Autos">
-            <br>
-            <label for="num_dormitorio">CANTIDAD DE DORMITORIOS: </label>
-            <input type="number" name="num_dormitorio" placeholder="Dormitorios">
-            <br>
+                <input type="hidden" name="id" id="idinput">
+
+                <label for="titulo">Titulo: </label>
+                <input type="text" name="titulo" placeholder="Titulo">
+
+                <label>Transacción: </label>
+                <br>
+                <label for="venta">Venta</label>
+                <input type="radio" name="transaccion" value="venta">
+                <label for="alquiler">Alquiler</label>
+                <input type="radio" name="transaccion" value="alquiler">
+
+                <br>
+                <label for="descripcion">Descripcion: </label>
+                <input type="text" name="descripcion" placeholder="Descripcion">
+
+                <label for="precio">Precio:</label>
+                <input type="number" name="precio" placeholder="Precio">
+
+                <label for="num_wc">Cantidad de baños: </label>
+                <input type="number" name="num_wc" placeholder="Baños">
+
+                <label for="num_estacionamiento">Cantidad de autos: </label>                
+                <input type="number" name="num_estacionamiento" placeholder="Autos">
+
+                <label for="num_dormitorio">Cantidad de dormitorios: </label>
+                <input type="number" name="num_dormitorio" placeholder="Dormitorios">
+                <br>
         </form>
     </div>
 
     <div id="tableContainer">
-        <button id="btnGuardar">Guardar</button>
-        <button id="btnEliminar">Eliminar</button>
-        <button id="btnCancelar">Cancelar</button>
+        <button id="saveBtn">Guardar</button>
+        <button id="deleteBtn">Eliminar</button>
+        <button id="cancelBtn">Cancelar</button>
     </div>
 
 </body>

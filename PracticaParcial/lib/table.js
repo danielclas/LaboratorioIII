@@ -51,8 +51,13 @@ export class Table{
     }
 
     static getSelectedRow(e){        
+                
+        selectedRow = e.srcElement.parentNode.children;    
+        
+        if(e.srcElement.parentNode.parentNode.tagName != 'TBODY') return;
 
-        selectedRow = e.srcElement.parentNode.children;        
+        document.getElementById('cancelBtn').style.display = 'inline-block';
+        document.getElementById('deleteBtn').style.display = 'inline-block';
 
         let inputs = document.querySelectorAll('input');
 

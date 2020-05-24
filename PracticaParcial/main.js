@@ -5,24 +5,40 @@ import {Form} from './lib/form.js';
 Request.ajaxGet('traer');
 
 let form = document.getElementById('form');
+let saveBtn = document.getElementById('saveBtn');
+let deleteBtn = document.getElementById('deleteBtn');
+let cancelBtn = document.getElementById('cancelBtn');
+
+saveBtn.onclick = saveToServer;
+deleteBtn.onclick = deleteEntry;
+cancelBtn.onclick = cancelEdit;
+
+deleteBtn.style.display = 'none';
+cancelBtn.style.display = 'none';
+
 form.onsubmit = (e) => e.preventDefault();
 
-let btnGuardar = document.getElementById('btnGuardar');
-let btnEliminar = document.getElementById('btnEliminar');
-
-btnGuardar.onclick = saveToServer;
-btnEliminar.onclick = deleteEntry;
-
 function saveToServer(){
-    let obj = Form.formToJson();
-    Request.ajaxPost(obj, 'modificar', 'application/json');
+
+    let obj = Form.formToObject();
+    let json = JSON.stringify(obj);
+    let resource = obj.id == "" ? 'alta' : 'modificar';
+
+    Request.ajaxPost(json, resource, 'application/json');
 }
 
 function deleteEntry(){
 
-    let id = Table.selectedId();
-    let obj = {id:id};
+    let id = parseInt(Table.selectedId());
+    let obj = "id="+id;
+    console.log(obj);
 
-    console.log(JSON.stringify(obj));
-    // Request.ajaxPost(JSON.stringify(obj), 'baja', 'application/x-www-form-urlencoded');
+    Request.ajaxPost(obj, 'baja', 'application/x-www-form-urlencoded');
+}
+
+function cancelEdit(){
+
+    deleteBtn.style.display = 'none';
+    cancelBtn.style.display = 'none';
+    Form.cleanForm();
 }
