@@ -37,7 +37,7 @@ tr{
     transition: 0.05s;
 }
 
-tr:hover {    
+tr:hover, .selected {    
     border-top: solid 2px rgb(63, 81, 181);
     border-bottom: solid 2px rgb(63, 81, 181);
     opacity: 1;

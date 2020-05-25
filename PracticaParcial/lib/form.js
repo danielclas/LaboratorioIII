@@ -1,7 +1,7 @@
 import {Table} from './table.js';
+import { Notify } from './notify.js';
 
 let form = document.getElementById('form');
-let keys = Table.keys();
 
 export class Form{
 
@@ -12,7 +12,6 @@ export class Form{
 
         inputs.forEach(input => {
             let value;
-            let index = keys.indexOf(input.name);
 
             if(input.type == 'radio'){
                 if(input.checked){
@@ -39,6 +38,8 @@ export class Form{
                 input.value = input.type == 'number' ? 0 : "";
             }
         });
+
+        Notify.showEditButtons(false);
     }    
 
     static isValidInput(input){
@@ -50,4 +51,31 @@ export class Form{
 
         return true;
     }    
+
+    static populateForm(selectedRow){
+
+        let inputs = document.querySelectorAll('input');
+        let keys = Table.keys();
+
+        inputs.forEach( input => {
+            let index = keys.indexOf(input.name);
+            let value = selectedRow[index].innerHTML;
+
+            if(input.type=='radio'){
+                if(input.value == value) input.checked = true;;
+            }else{
+                if(value[0]=='$'){
+                    let temp = "";                    
+                    for(let i = 0 ; i<value.length ; i++){
+                        if(!isNaN(value[i])) temp+=value[i];
+                    }    
+                    value = parseInt(temp);
+                }
+                input.value = value;
+            }            
+        });        
+
+        Notify.showEditButtons(true);
+        Notify.invalidForm(false);
+    }
 }

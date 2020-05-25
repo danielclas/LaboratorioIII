@@ -19,8 +19,7 @@ cancelBtn.style.display = 'none';
 
 form.onsubmit = (e) => e.preventDefault();
 form.oninput = () => {    
-    let p = document.getElementById('errorMsg');
-    p.style.display = 'none';
+    Notify.invalidForm(false);
 }
 
 function saveToServer(){
@@ -28,7 +27,7 @@ function saveToServer(){
     let obj = Form.formToObject();
 
     if(!obj){
-        Notify.invalidForm();
+        Notify.invalidForm(true);
     }else{
         let json = JSON.stringify(obj);
         let resource = obj.id == "" ? 'alta' : 'modificar';
@@ -45,8 +44,7 @@ function deleteEntry(){
 }
 
 function cancelEdit(){
-
-    deleteBtn.style.display = 'none';
-    cancelBtn.style.display = 'none';
     Form.cleanForm();
+    Notify.invalidForm(false);
+    Notify.showEditButtons(false);
 }

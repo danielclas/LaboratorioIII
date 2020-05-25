@@ -1,4 +1,6 @@
 import {Request} from './request.js';
+import { Notify } from './notify.js';
+import { Form } from './form.js';
 
 const container = document.getElementById('tableContainer');
 const keys = [];
@@ -21,7 +23,7 @@ export class Table{
             thead.appendChild(th);
         });
 
-        table = temp;
+        return temp
     }
 
     static keys(){
@@ -34,76 +36,58 @@ export class Table{
 
     static paintTable(data){
 
-        if(container.children.length > 3){
-            container.removeChild(table);
-        }
-
-        if(data){
-            this.getKeys(data);
-        }
-
-        this.emptyTable();
-        if(data.data){
-            this.loadTable(data);
-        }
+        if(data) this.getKeys(data);
         
-        container.appendChild(table);
+        let temp = this.emptyTable();
 
+        if(data.data) temp = this.loadTable(data,temp);            
+        
+        if(container.children.length > 3) document.querySelector('#table') = temp; 
+        else container.appendChild(temp);
+        
+        table = temp;
         table.onclick = this.getSelectedRow;
     }
 
     static getSelectedRow(e){        
-                
+        
+        let s = document.getElementsByClassName('selected');
+        if(s[0]) s[0].classList.remove('selected');
+
+        if(selectedRow==e.srcElement.parentNode.children){
+            selectedRow = undefined;
+            Form.cleanForm();
+            return;
+        }
+
         selectedRow = e.srcElement.parentNode.children;    
         
         if(e.srcElement.parentNode.parentNode.tagName != 'TBODY') return;
 
-        document.getElementById('cancelBtn').style.display = 'inline-block';
-        document.getElementById('deleteBtn').style.display = 'inline-block';
+        e.srcElement.parentNode.classList.add('selected');
 
-        let inputs = document.querySelectorAll('input');
-
-        inputs.forEach( input => {
-            let index = keys.indexOf(input.name);
-            let value = selectedRow[index].innerHTML;
-
-            if(input.type=='radio'){
-                if(input.value == value) input.checked = true;;
-            }else{
-                if(value[0]=='$'){
-                    let temp = "";
-                    
-                    for(let i = 0 ; i<value.length ; i++){
-                        if(!isNaN(value[i])) temp+=value[i];
-                    }
-    
-                    value = parseInt(temp);
-                }
-                input.value = value;
-            }
-            
-        });        
+        Form.populateForm(selectedRow);
     }    
 
     static getKeys(data){        
         let temp = data.data[0];
 
-        for(let key in temp){
-            keys.push(key);
-        }
-                    
+        for(let key in temp)
+            keys.push(key);                     
     }
 
-    static loadTable(data){
+    static loadTable(data, temp){
 
         data.data.forEach( obj => {
-            let row = table.insertRow();
+            let row = temp.insertRow();
             keys.forEach( key => {
                 let td = document.createElement('TD');
                 td.innerHTML = obj[key];
                 row.appendChild(td);
             });            
-        });
+        });        
+
+        return temp;
     }
 
     static normalizeHeader(text){
