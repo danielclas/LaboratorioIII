@@ -6,7 +6,8 @@ export class Notify{
         
     }    
 
-    static invalidForm(){
-        alert("datos invalidos");
+    static invalidForm(show){        
+        let p = document.getElementById('errorMsg');
+        p.style.display= 'block';
     }
 }

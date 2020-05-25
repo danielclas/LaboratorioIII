@@ -4,7 +4,6 @@ const container = document.getElementById('tableContainer');
 const keys = [];
 let table;
 let selectedRow;
-let form;
 
 export class Table{
 
@@ -96,8 +95,6 @@ export class Table{
     }
 
     static loadTable(data){
-
-        let body = table.children[1];
 
         data.data.forEach( obj => {
             let row = table.insertRow();

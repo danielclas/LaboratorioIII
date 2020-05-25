@@ -49,6 +49,11 @@ input{
     width:100%;
 }
 
+#errorMsg{
+    color:red;
+    display: none;
+}
+
 button{
   padding:10px;
   border:none;

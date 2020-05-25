@@ -20,7 +20,7 @@ export class Form{
                     if(obj) obj[input.name] = input.value;
                 }
             }else{
-                if(!this.validInput(input)) obj = undefined;                    
+                if(!this.isValidInput(input)) obj = undefined;                    
                 if(obj) obj[input.name] = input.value;
             }               
         });
@@ -41,7 +41,7 @@ export class Form{
         });
     }    
 
-    static validInput(input){
+    static isValidInput(input){
 
         if(input.type == 'number' && (isNaN(input.value) || input.value < 0 || input.value == ""))            
                 return false;
