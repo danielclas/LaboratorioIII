@@ -13,6 +13,7 @@ let cancelBtn = document.getElementById('cancelBtn');
 saveBtn.onclick = saveToServer;
 deleteBtn.onclick = deleteEntry;
 cancelBtn.onclick = cancelEdit;
+window.onscroll = Table.scrollTable;
 
 deleteBtn.style.display = 'none';
 cancelBtn.style.display = 'none';

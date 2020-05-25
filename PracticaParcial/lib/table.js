@@ -99,4 +99,23 @@ export class Table{
 
         return temp;
     }
+
+    static scrollTable(){
+        
+        let firstRow;
+
+        if(table){
+            firstRow = table.children[1].children[0];
+            let heigth = firstRow.clientHeight;
+            let top = firstRow.getBoundingClientRect().top;
+            let thead = table.children[0];
+            if(top>0){
+                thead.style.marginTop = '0px';
+            }else{            
+                let temp = Math.floor(top/heigth)*-1;
+                let offset = table.children[1].children.length * 5;
+                thead.style.marginTop = temp*heigth+offset+'px';  
+            }
+        }              
+    }
 }
