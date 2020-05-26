@@ -41,7 +41,7 @@ export class Form{
             }
         });
 
-        form.scrollIntoView(true);
+        form.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         Notify.showEditButtons(false);
     }    
 
@@ -78,7 +78,7 @@ export class Form{
             }            
         });        
 
-        form.scrollIntoView(true);
+        form.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         Notify.showEditButtons(true);
         Notify.invalidForm(false);
     }

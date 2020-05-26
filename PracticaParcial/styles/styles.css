@@ -30,7 +30,7 @@ td,th{
 /* @media screen and (max-width:850px){
     table,td,th{
         display: flex;
-        /* flex-direction: row; */
+        flex-direction: row;
     }
 } */
 
@@ -48,7 +48,6 @@ tr:hover, .selected {
     border-top: solid 2px rgb(63, 81, 181);
     border-bottom: solid 2px rgb(63, 81, 181);
     opacity: 1;
-    font-weight: bold;
 }
 
 input{
@@ -60,6 +59,7 @@ input{
 p{
     text-align: center;
     display: none;
+    text-emphasis: bolder;
 }
 
 button{
@@ -76,6 +76,7 @@ button{
 
 button:hover{
     opacity: 1;
+    transform: scale(1.1);
 }
 
 input[type=text], input[type=number]{
