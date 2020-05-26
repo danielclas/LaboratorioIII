@@ -9,6 +9,7 @@ export class Form{
 
         let obj = {};
         let inputs = document.querySelectorAll('input');
+        let checked = false;
 
         inputs.forEach(input => {
             let value;
@@ -17,6 +18,7 @@ export class Form{
                 if(input.checked){
                     value = input.value;
                     if(obj) obj[input.name] = input.value;
+                    checked = true;
                 }
             }else{
                 if(!this.isValidInput(input)) obj = undefined;                    
@@ -24,7 +26,7 @@ export class Form{
             }               
         });
 
-        return obj;
+        return checked ? obj : undefined;
     }
 
     static cleanForm(){
@@ -39,6 +41,7 @@ export class Form{
             }
         });
 
+        form.scrollIntoView(true);
         Notify.showEditButtons(false);
     }    
 
@@ -75,6 +78,7 @@ export class Form{
             }            
         });        
 
+        form.scrollIntoView(true);
         Notify.showEditButtons(true);
         Notify.invalidForm(false);
     }

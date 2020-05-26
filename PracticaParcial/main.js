@@ -3,7 +3,8 @@ import {Table} from './lib/table.js';
 import {Form} from './lib/form.js';
 import {Notify} from './lib/notify.js';
 
-Request.ajaxGet('traer');
+// Request.ajaxRequest('GET', '', 'traer', '');
+Request.fetchRequest('GET', '', 'traer', '');
 
 let form = document.getElementById('form');
 let saveBtn = document.getElementById('saveBtn');
@@ -13,7 +14,7 @@ let cancelBtn = document.getElementById('cancelBtn');
 saveBtn.onclick = saveToServer;
 deleteBtn.onclick = deleteEntry;
 cancelBtn.onclick = cancelEdit;
-window.onscroll = Table.scrollTable;
+// window.onscroll = Table.scrollTable;
 
 deleteBtn.style.display = 'none';
 cancelBtn.style.display = 'none';
@@ -32,7 +33,7 @@ function saveToServer(){
     }else{
         let json = JSON.stringify(obj);
         let resource = obj.id == "" ? 'alta' : 'modificar';
-        Request.ajaxPost(json, resource, 'application/json');
+        Request.fetchRequest('POST', json, resource, 'application/json');
     }      
 }
 
@@ -41,11 +42,12 @@ function deleteEntry(){
     let id = Table.selectedId();
     let obj = "id="+id;
 
-    Request.ajaxPost(obj, 'baja', 'application/x-www-form-urlencoded');
+    Request.fetchRequest('POST', obj, 'baja', 'application/x-www-form-urlencoded');
 }
 
 function cancelEdit(){
     Form.cleanForm();
+    Table.unselectRow();
     Notify.invalidForm(false);
     Notify.showEditButtons(false);
 }

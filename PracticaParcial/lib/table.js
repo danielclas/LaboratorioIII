@@ -40,19 +40,28 @@ export class Table{
         
         let temp = this.emptyTable();
 
-        if(data.data) temp = this.loadTable(data,temp);            
+        if(data.data.length > 0) temp = this.loadTable(data,temp);  
+        else Notify.emptyTable(true);     
         
-        if(container.children.length > 3) document.querySelector('#table') = temp; 
+        if(container.children.length > 4) document.querySelector('#table') = temp; 
         else container.appendChild(temp);
         
         table = temp;
         table.onclick = this.getSelectedRow;
     }
+    
+    static unselectRow(){
+
+        let s = document.getElementsByClassName('selected');
+        if(s[0]) s[0].classList.remove('selected');        
+        
+    }
 
     static getSelectedRow(e){        
-        
-        let s = document.getElementsByClassName('selected');
-        if(s[0]) s[0].classList.remove('selected');
+                
+        if(e.srcElement.parentNode.parentNode.tagName != 'TBODY') return;        
+
+        Table.unselectRow();
 
         if(selectedRow==e.srcElement.parentNode.children){
             selectedRow = undefined;
@@ -61,13 +70,11 @@ export class Table{
         }
 
         selectedRow = e.srcElement.parentNode.children;    
-        
-        if(e.srcElement.parentNode.parentNode.tagName != 'TBODY') return;
 
         e.srcElement.parentNode.classList.add('selected');
 
         Form.populateForm(selectedRow);
-    }    
+    }
 
     static getKeys(data){        
         let temp = data.data[0];
@@ -100,22 +107,28 @@ export class Table{
         return temp;
     }
 
-    static scrollTable(){
+    // static scrollTable(){
         
-        let firstRow;
+    //     let firstRow;
 
-        if(table){
-            firstRow = table.children[1].children[0];
-            let heigth = firstRow.clientHeight;
-            let top = firstRow.getBoundingClientRect().top;
-            let thead = table.children[0];
-            if(top>0){
-                thead.style.marginTop = '0px';
-            }else{            
-                let temp = Math.floor(top/heigth)*-1;
-                let offset = table.children[1].children.length * 5;
-                thead.style.marginTop = temp*heigth+offset+'px';  
-            }
-        }              
-    }
+    //     if(table){
+    //         firstRow = table.children[1].children[0];
+    //         if(firstRow){
+    //             let heigth = firstRow.clientHeight;
+    //             let top = firstRow.getBoundingClientRect().top;
+    //             let thead = table.children[0];
+    //             if(top>0){
+    //                 thead.style.paddingTop = '0px';
+    //             }else{            
+    //                 let temp = Math.floor(top/heigth)*-1;
+    //                 let offset = table.children[1].children.length * 5;
+    //                 thead.style.paddingTop = temp*heigth+offset+'px';  
+    //             }
+    //         }            
+    //         /*
+    //             While el row.top sea mayor a 0, acum.
+    //             padding = acum;
+    //         */
+    //     }              
+    // }
 }

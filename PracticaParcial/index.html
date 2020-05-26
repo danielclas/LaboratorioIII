@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js" type="module"></script>
-    <link rel = "stylesheet" type = "text/css" href="styles/styles.css"/>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="./main.js" type="module"></script>
+    <link rel="stylesheet" type = "text/css" href="./styles/styles.css"/>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
     <title>PracticaParcial</title>
 </head>
 <body>
+
+    <div id="modal">
+        <img src="assets/spinner.svg" alt="Spinner" id="modal-content">
+    </div>
+
     <h1>Llena el formulario de alta</h1>
         <form id="form" action="#">
                 <input type="hidden" name="id" id="idinput">
@@ -47,6 +52,7 @@
         <button id="saveBtn">Guardar</button>
         <button id="deleteBtn">Eliminar</button>
         <button id="cancelBtn">Cancelar</button>
+        <p id="emptyTable">No hay datos para mostrar</p>
     </div>
 </body>
 </html>

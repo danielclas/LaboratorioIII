@@ -18,6 +18,7 @@ table{
     border-collapse: collapse;
     text-align: left;
     flex-basis: 80%;
+    width: 100%;
 }
 
 td,th{
@@ -26,15 +27,12 @@ td,th{
     border-left: solid 1px rgb(63, 81, 181);
 }
 
-@media screen and (max-width:850px){
+/* @media screen and (max-width:850px){
     table,td,th{
         display: flex;
-        flex-direction: row;
+        /* flex-direction: row; */
     }
-    thead{
-        
-    } 
-}
+} */
 
 th{
     text-align: center;
@@ -50,6 +48,7 @@ tr:hover, .selected {
     border-top: solid 2px rgb(63, 81, 181);
     border-bottom: solid 2px rgb(63, 81, 181);
     opacity: 1;
+    font-weight: bold;
 }
 
 input{
@@ -58,8 +57,8 @@ input{
     width:100%;
 }
 
-#errorMsg{
-    color:red;
+p{
+    text-align: center;
     display: none;
 }
 
@@ -111,4 +110,31 @@ tbody tr:nth-child(even) {
     text-align:left;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius: 10px;  
+    overflow: auto;
+}
+
+#modal-content{
+    width:300px;
+    padding: 10px 20px;
+    margin: 20% auto;
+    position: relative;
+    display: block;
+}
+
+#modal{
+    z-index: 1;
+    background-color: rgba(0,0,0,.8);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity:1;
+    pointer-events:none;
+    display: block;
+}
+
+#errorMsg{
+    color:red;
+    display: none;
 }
