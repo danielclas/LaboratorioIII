@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./main.js" type="module"></script>
+    <link rel="stylesheet" type = "text/css" href="./styles/styles.css"/>
+    <link rel="icon" type="image/png" href="./assets/logo.svg">
+    <title>PracticaParcial</title>
+</head>
+<body>
+
+    <header>
+        <img id="logo" src="./assets/logo.svg" alt="Logo">
+        <nav class="headerNav">
+          <a href="#form">Nosotros</a>
+          <a href="#form">Anuncios</a>
+          <a href="#form">Blog</a>
+          <a href="#form">Contactos</a>
+        </nav>
+    </header>
+
+    <div id="imgContainer">
+        <img id="banner" src="./assets/banner.jpg" alt="Banner">
+    </div>    
+
+    <div id="modal">
+        <img src="assets/spinner.svg" alt="Spinner" id="modal-content">
+    </div>
+
+    <h1>Administración</h1>
+    <fieldset>
+        <legend>Información del anuncio</legend>
+        <form id="form" action="#">
+                
+                <input type="hidden" name="id" id="idinput">
+
+                <label for="titulo">Titulo: </label>
+                <input type="text" name="titulo" placeholder="Titulo">
+
+                <label>Transacción: </label>
+                <br>
+                <select name="transaccion" >
+                    <option value="" disabled selected>Elija una transaccion</option>
+                    <option value="venta">Venta</option>
+                    <option value="alquiler">Alquiler</option>
+                    <option value="permuta">Permuta</option>
+                </select>
+
+                <br>
+                <label for="descripcion">Descripcion: </label>
+                <input type="text" name="descripcion" placeholder="Descripcion">
+
+                <label for="precio">Precio:</label>
+                <input type="number" name="precio" min=0 placeholder="Precio">
+
+                <img class="icon" src="./assets/icons/dooricon.png" alt="">
+                <label for="num_wc">Cantidad de puertas: </label>
+                <input type="number" name="num_puertas" min=0 max=8 placeholder="Puertas">
+                
+                <img class="icon" src="./assets/icons/speedicon.png" alt="">
+                <label for="num_estacionamiento">Cantidad de KMs: </label>                
+                <input type="number" name="num_KMs" min=0 placeholder="KM">
+                
+                <img class="icon" src="./assets/icons/motoricon.png" alt="">
+                <label for="num_dormitorio">Potencia: </label>
+                <input type="number" name="potencia" min=0 placeholder="Potencia">
+
+                <p id="errorMsg">Error en los datos del formulario</p>
+                <br>
+        </form>
+    </fieldset>
+
+    <div id="tableContainer">
+        <button id="saveBtn"><img class="icon" src="./assets/icons/saveicon.png" alt="save">Guardar</button>
+        <button id="deleteBtn"><img class="icon" src="./assets/icons/deleteicon.png" alt="delete">Eliminar</button>
+        <button id="cancelBtn"><img class="icon" src="./assets/icons/cancelicon.png" alt="cancel">Cancelar</button>
+        <p id="emptyTable">No hay datos para mostrar</p>
+    </div>
+
+    <footer>
+        <nav class="footerNav">
+          <a href="#form">Nosotros</a>
+          <a href="#form">Anuncios</a>
+          <a href="#form">Blog</a>
+          <a href="#form">Contactos</a>
+        </nav>
+        <p class='footerText'>
+            Todos los derechos reservados 2019 &reg;
+        </p>
+    </footer>
+</body>
+</html>

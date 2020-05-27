@@ -42,6 +42,10 @@ nav{
     right: 0;
 }
 
+.banner{
+    width: 90%;
+}
+
 div{
     background-color: white;
 }
