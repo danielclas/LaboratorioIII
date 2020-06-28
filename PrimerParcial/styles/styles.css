@@ -14,59 +14,22 @@ h1{
     margin: 0px;
 }
 
-table{
-    margin-top: 20px;
-    border-collapse: collapse;
-    text-align: left;
-    flex-basis: 80%;
-    width: 100%;
-}
-
-td,th{
-    padding: 15px;
-    border-right: solid 1px rgb(63, 81, 181);
-    border-left: solid 1px rgb(63, 81, 181);
-}
-
-th{
-    text-align: center;
-    background-color: rgba(63, 81, 181,0.15);
-}
-
-tr{
-    border:none;
-    opacity: 0.8;
-    transition: 0.05s;
-}
-
-
-
-tr:hover, .selected {    
-    border-top: solid 2px rgb(114, 174, 217);
-    border-bottom: solid 2px rgb(114, 174, 217);
-    opacity: 1;
-}
-
 input,select{
     margin: 10px 0;
     display: block;
     width:100%;
 }
 
-button{
+.controlBtn{
   padding:10px;
-  border:none;
-  background-color:rgb(37, 80, 136);
-  color:#fff;
+  margin:10px;
   font-weight:600;
   border-radius:10px;
   text-align: center;
-  opacity: 0.6;
   transition: 0.3s;  
 }
 
-button:hover{
-    opacity: 1;
+.controlBtn:hover{
     transform: scale(1.1);
 }
 
@@ -86,16 +49,7 @@ label[for='alquiler'], label[for='venta']{
     justify-content: center;
 }
 
-tbody tr:nth-child(odd) {
-  background-color: rgba(37, 80, 136,0.35);
-}
-
-tbody tr:nth-child(even) {
-  background-color: rgba(37, 80, 136,0.15);
-}
-
-
-#tableContainer, #form, fieldset{
+#tableContainer, .form, fieldset, .card{
     width:80%; 
     margin:20px auto;
     padding: 10px;
@@ -103,6 +57,10 @@ tbody tr:nth-child(even) {
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius: 10px;  
     overflow: auto;
+}
+
+#filterForm{
+    width:100%;
 }
 
 fieldset>form{
@@ -148,11 +106,6 @@ p{
     transform: scale(1.05);
 }
 
-header, footer {
-    overflow: hidden;
-    background-color: rgba(17, 115, 206,0.6);
-}
-
 .headerNav{
     float: right;
     margin-top: 30px;
@@ -192,24 +145,9 @@ img{
     margin: 0px;
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 200px;
+    height: 250px;
+    border-radius: 10px;  
 }
-
-.footerNav{
-    float: left;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: 30px;
-}
-
-.footerText{
-    display:block;
-    float: right;
-    margin-right: 30px;
-    margin-top: 30px;
-}
-
-
 
 @media screen and (max-width:850px){
     header{

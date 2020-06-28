@@ -1,47 +1,39 @@
-import {Request} from './lib/request.js';
+import {DAO} from './lib/dao.js';
 import {Table} from './lib/table.js';
 import {Form} from './lib/form.js';
 import {Notify} from './lib/notify.js';
+import {Filter} from './lib/filter.js';
 
-Request.ajaxRequest('GET', '', 'traer', '');
+// DAO.initLocalStorage();
+// DAO.getFromLocalStorage();
+DAO.getFromServer();
 
 let form = document.getElementById('form');
+let filterForm = document.getElementById('filterForm');
 let saveBtn = document.getElementById('saveBtn');
 let deleteBtn = document.getElementById('deleteBtn');
 let cancelBtn = document.getElementById('cancelBtn');
+let filterBtn = document.getElementById('btnFiltrar');
 
-saveBtn.onclick = saveToServer;
-deleteBtn.onclick = deleteEntry;
+//Cambiar a save/delete from localStorage de ser necesario
+// saveBtn.onclick = DAO.saveToLocalStorage;
+// deleteBtn.onclick = DAO.deleteFromLocalStorage;
+saveBtn.onclick = DAO.saveToServer;
+deleteBtn.onclick = DAO.deleteFromServer;
 cancelBtn.onclick = cancelEdit;
+
 
 deleteBtn.style.display = 'none';
 cancelBtn.style.display = 'none';
+
+filterBtn.onclick = Filter.applyFilters;
+filterBtn.disabled = true;
 
 form.onsubmit = (e) => e.preventDefault();
 form.oninput = () => {    
     Notify.invalidForm(false);
 }
-
-function saveToServer(){
-
-    let obj = Form.formToObject();
-
-    if(!obj){
-        Notify.invalidForm(true);
-    }else{
-        let json = JSON.stringify(obj);
-        let resource = obj.id == "" ? 'alta' : 'modificar';
-        Request.ajaxRequest('POST', json, resource, 'application/json');
-    }      
-}
-
-function deleteEntry(){
-
-    let id = Table.selectedId();
-    let obj = "id="+id;
-
-    Request.ajaxRequest('POST', obj, 'baja', 'application/x-www-form-urlencoded');
-}
+filterForm.onchange = () => filterBtn.disabled = false;
 
 function cancelEdit(){
     Form.cleanForm();

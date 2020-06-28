@@ -10,13 +10,13 @@ export class Form{
 
         //Parses the current form to an object
         let obj = {};
-        let inputs = document.querySelectorAll('input');
-        let options = document.getElementsByTagName('option');
+        let inputs = [...document.querySelectorAll('input')].filter(a=>!a.classList.contains('filter'));
+        let options = [...document.getElementsByTagName('option')].filter(a=>!a.classList.contains('filter'));
         let transaccion;
 
-        inputs.forEach(input => {
-            if(!this.isValidInput(input)) obj = undefined;                    
-            if(obj) obj[input.name] = input.value;              
+        inputs.forEach(input => {            
+                if(!this.isValidInput(input)) obj = undefined;                    
+                if(obj) obj[input.name] = input.value;                 
         });
 
         for (let item of options) {
@@ -37,12 +37,13 @@ export class Form{
         let options = document.getElementsByTagName('option');
 
         inputs.forEach(input=>{            
-            input.value = input.type == 'number' ? 0 : "";            
+            if(!input.classList.contains('filter'))
+                input.value = input.type == 'number' ? 0 : "";            
         });
 
         options[0].selected = true;        
 
-        form.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        // form.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         Notify.showEditButtons(false);
     }    
 
@@ -64,27 +65,27 @@ export class Form{
     static populateForm(selectedRow){
 
         //Populates form from data obtained from the selected row
-        let inputs = document.querySelectorAll('input');
-        let keys = Table.keys();
+        let inputs = [...document.querySelectorAll('input')].filter(a=>!a.classList.contains('filter'));
+        let keys = Table.getKeys();
         let transaccion = keys.indexOf('transaccion');
-        let options = document.getElementsByTagName('option');
+        let options = [...document.getElementsByTagName('option')].filter(a=>!a.classList.contains('filter'));
 
         inputs.forEach( input => {
-            let index = keys.indexOf(input.name);
-            let value = selectedRow[index].innerHTML;
-                
-            if(value[0]=='$'){
-                let temp = "";                    
-                for(let i = 0 ; i<value.length ; i++){
-                    if(!isNaN(value[i])) temp+=value[i];
-                }    
-                value = parseInt(temp);
-            }
-            input.value = value;                     
+                let index = keys.indexOf(input.name);
+                let value = selectedRow[index].innerHTML;
+                    
+                if(value[0]=='$'){
+                    let temp = "";                    
+                    for(let i = 0 ; i<value.length ; i++){
+                        if(!isNaN(value[i])) temp+=value[i];
+                    }    
+                    value = parseInt(temp);
+                }
+                input.value = value;                    
         });  
 
         for(let item of options){
-            if(item.value == selectedRow[transaccion].innerHTML){
+            if(item.value.toLowerCase() == selectedRow[transaccion].innerHTML.toLowerCase()){
                 item.selected = true;
             }
         }

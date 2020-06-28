@@ -1,5 +1,6 @@
 import {Table} from './table.js';
 import {Notify} from './notify.js';
+import { DAO } from './dao.js';
 
 const route = 'http://localhost:3000/';
 
@@ -17,7 +18,7 @@ export class Request{
                         this.ajaxRequest('GET', '', 'traer', '');
                     }else{
                         let data = JSON.parse(xhr.responseText);
-                        Table.paintTable(data);   
+                        DAO.saveDataToMemory(data.data);   
                         Notify.showSpinner(false);    
                     }
                 }
@@ -49,7 +50,7 @@ export class Request{
             if(method == 'POST'){
                 this.fetchRequest('GET', '', 'traer', '');
             }else{
-                Table.paintTable(res);   
+                DAO.saveDataToMemory(res);     
                 Notify.showSpinner(false);  
             }
         })
