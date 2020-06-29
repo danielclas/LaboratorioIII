@@ -38,7 +38,7 @@ export class DAO{
         Request.ajaxRequest('POST', "id="+Table.getSelectedId(), 'baja', 'application/x-www-form-urlencoded');
     }
 
-    static getFromServer(){
+    static getFromServer(){        
         
         Request.ajaxRequest('GET', '', 'traer', '');
     }

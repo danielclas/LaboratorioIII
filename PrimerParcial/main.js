@@ -4,9 +4,9 @@ import {Form} from './lib/form.js';
 import {Notify} from './lib/notify.js';
 import {Filter} from './lib/filter.js';
 
-// DAO.initLocalStorage();
-// DAO.getFromLocalStorage();
-DAO.getFromServer();
+DAO.initLocalStorage();
+DAO.getFromLocalStorage();
+// DAO.getFromServer();
 
 let form = document.getElementById('form');
 let filterForm = document.getElementById('filterForm');
@@ -16,10 +16,10 @@ let cancelBtn = document.getElementById('cancelBtn');
 let filterBtn = document.getElementById('btnFiltrar');
 
 //Cambiar a save/delete from localStorage de ser necesario
-// saveBtn.onclick = DAO.saveToLocalStorage;
-// deleteBtn.onclick = DAO.deleteFromLocalStorage;
-saveBtn.onclick = DAO.saveToServer;
-deleteBtn.onclick = DAO.deleteFromServer;
+saveBtn.onclick = DAO.saveToLocalStorage;
+deleteBtn.onclick = DAO.deleteFromLocalStorage;
+// saveBtn.onclick = DAO.saveToServer;
+// deleteBtn.onclick = DAO.deleteFromServer;
 cancelBtn.onclick = cancelEdit;
 
 

@@ -99,7 +99,6 @@ export class Filter{
             if(input.tagName == 'OPTION') return input.selected && input.value != "";
             else return input.value;
         });
-        console.log("IN", inputs);
 
         let data = DAO.getDataCopy().filter( data => {
             let valid = true;
