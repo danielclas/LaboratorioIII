@@ -51,9 +51,14 @@ export class Table{
         if(data) this.getKeysFromData(data);
         
         let temp = this.createEmptyTable();
+        let empty = true;
 
-        if(data.length > 0) temp = this.loadTable(data,temp);  
-        else Notify.emptyTable(true);     
+        if(data.length > 0){ 
+            temp = this.loadTable(data,temp);
+            empty = false;
+        }
+
+        Notify.emptyTable(empty);     
 
         let current = document.querySelector('#table');
         if(current) current.remove();

@@ -10,24 +10,30 @@ export class Form{
 
         //Parses the current form to an object
         let obj = {};
-        let inputs = [...document.querySelectorAll('input')].filter(a=>!a.classList.contains('filter'));
-        let options = [...document.getElementsByTagName('option')].filter(a=>!a.classList.contains('filter'));
+        let inputs = [...document.querySelectorAll('input')].filter( a => !a.classList.contains('filter'));
+        let options = [...document.getElementsByTagName('option')].filter(a => !a.classList.contains('filter'));
         let transaccion;
 
         inputs.forEach(input => {            
-                if(!this.isValidInput(input)) obj = undefined;                    
-                if(obj) obj[input.name] = input.value;                 
+            if(!this.isValidInput(input)) obj = undefined;                    
+            if(obj) obj[input.name] = input.value;                 
         });
 
-        for (let item of options) {
-            if(item.selected){
-                transaccion = item.value;
-            }   
-        }
+        options.forEach(option => { 
+            if(option.selected) transaccion = item.option;
+        });
 
         if(transaccion && obj) obj['transaccion'] = transaccion;
 
         return transaccion && obj ? new anuncio_auto(obj) : undefined;
+    }
+
+    static hideForm(){
+
+        let hideBtn = document.getElementById('hideform');
+
+        form.style.display = form.style.display == 'none' ? '' : 'none';
+        hideBtn.innerHTML = hideBtn.innerHTML == 'Ocultar' ? 'Mostrar' : 'Ocultar';
     }
 
     static cleanForm(){
@@ -50,9 +56,9 @@ export class Form{
     static isValidInput(input){
 
         if(input.type == 'number'){
-            if((isNaN(input.value) || input.value < 0 || input.value == "")){
+            if(input.name == 'num_puertas' && (input.value > 8 || input.value < 1)){
                 return false;
-            }else if(input.name == 'num_puertas' && input.value > 8){
+            }else if((isNaN(input.value) || input.value < 0 || input.value == "")){
                 return false;
             }
         }                       
@@ -65,10 +71,10 @@ export class Form{
     static populateForm(selectedRow){
 
         //Populates form from data obtained from the selected row
-        let inputs = [...document.querySelectorAll('input')].filter(a=>!a.classList.contains('filter'));
+        let inputs = [...document.querySelectorAll('input')].filter(a => !a.classList.contains('filter'));
         let keys = Table.getKeys();
         let transaccion = keys.indexOf('transaccion');
-        let options = [...document.getElementsByTagName('option')].filter(a=>!a.classList.contains('filter'));
+        let options = [...document.getElementsByTagName('option')].filter(a => !a.classList.contains('filter'));
 
         inputs.forEach( input => {
                 let index = keys.indexOf(input.name);
@@ -93,5 +99,12 @@ export class Form{
         form.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         Notify.showEditButtons(true);
         Notify.invalidForm(false);
+    }
+    
+    static cancelEdit(){
+        Form.cleanForm();
+        Table.unselectRow();
+        Notify.invalidForm(false);
+        Notify.showEditButtons(false);
     }
 }

@@ -22,14 +22,12 @@ export class DAO{
     static saveToServer(){
 
         let obj = Form.formToObject();
-        console.log("obj",obj);
     
         if(!obj) Notify.invalidForm(true);
         else{
-            let json = JSON.stringify(obj);
             let resource = obj.id == "" ? 'alta' : 'modificar';
             
-            Request.ajaxRequest('POST', json, resource, 'application/json');
+            Request.ajaxRequest('POST', JSON.stringify(obj), resource, 'application/json');
         }      
     }
     
@@ -58,13 +56,10 @@ export class DAO{
             let temp = data;
 
             if(obj.id == ""){                
-                let lastId = -1;
+                let lastId = data.reduce( (prev,current) => {
+                    return prev.id > current.id ? prev.id : current.id;
+                });
 
-                temp.forEach( d => {
-                    if(d.id > lastId) lastId = d.id;
-                });                
-
-                lastId = parseInt(lastId);
                 lastId++;
                 obj.id = ""+lastId;
                 temp.push(obj);
@@ -81,17 +76,14 @@ export class DAO{
         
     }
 
-    static deleteFromLocalStorage(){
-        
-        let newData = [];
+    static deleteFromLocalStorage(){   
+
         let id = Table.getSelectedId();
 
-        data.forEach( d => {
-            if(d.id != id) newData.push(d);
-        })
+        data = data.filter( d => d.id != id);
 
-        localStorage.setItem('data',JSON.stringify(newData));
-        DAO.getFromLocalStorage();       
+        localStorage.setItem('data', JSON.stringify(data));
+        DAO.getFromLocalStorage();
     }
 
     static initLocalStorage(){

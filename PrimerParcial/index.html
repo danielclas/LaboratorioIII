@@ -28,10 +28,6 @@
               </div>
             </div>
         </nav>
-
-        <div id="imgContainer">
-            <img id="banner" src="./assets/banner.jpg" alt="Banner">
-        </div>        
         
         <!-- No se utiliza si se trabaja con localStorage -->     
         <!-- <div id="modal">
@@ -40,8 +36,10 @@
         
         <h1>Administración</h1>
         <fieldset>
-            <legend>Información del anuncio</legend>
-            <form id="form" class="form" action="#">
+            <legend>Información del anuncio
+                <button id="hideform" class="btn btn-secondary">Ocultar</button>
+            </legend>
+            <form id="form" class="item form" action="#">
                     
                     <input type="hidden" name="id" id="idinput">
 
@@ -167,13 +165,12 @@
                 <br>
                 <h5 class="card-title text-center">Modificar vista</h5>
                 <div class="btn-toolbar justify-content-center" role="toolbar">
-                    <div id="btnGroup" class="btn-group" role="group">
+                    <div id="btnGroup" class="btn-group row" role="group">
                         <button id="resetBtn" type="button" class="btn btn-outline-primary">Resetear vista</button>
                     </div>
                 </div>
-                <br> 
             </div>
-          </div>
+        </div>
 
         <div id="tableContainer">
             <button id="saveBtn" class="btn btn-success controlBtn"><img class="icon" src="./assets/icons/saveicon.png" alt="save">Guardar</button>

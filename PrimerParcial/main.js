@@ -14,14 +14,17 @@ let saveBtn = document.getElementById('saveBtn');
 let deleteBtn = document.getElementById('deleteBtn');
 let cancelBtn = document.getElementById('cancelBtn');
 let filterBtn = document.getElementById('btnFiltrar');
+let hideFormBtn = document.getElementById('hideform');
+let hideFiltersBtn = document.getElementById('hidefilters');
 
 //Cambiar a save/delete from localStorage de ser necesario
 saveBtn.onclick = DAO.saveToLocalStorage;
 deleteBtn.onclick = DAO.deleteFromLocalStorage;
 // saveBtn.onclick = DAO.saveToServer;
 // deleteBtn.onclick = DAO.deleteFromServer;
-cancelBtn.onclick = cancelEdit;
-
+cancelBtn.onclick = Form.cancelEdit;
+hideFormBtn.onclick = Form.hideForm;
+hideFiltersBtn.onclick = Filter.hideForm;
 
 deleteBtn.style.display = 'none';
 cancelBtn.style.display = 'none';
@@ -33,11 +36,5 @@ form.onsubmit = (e) => e.preventDefault();
 form.oninput = () => {    
     Notify.invalidForm(false);
 }
-filterForm.onchange = () => filterBtn.disabled = false;
 
-function cancelEdit(){
-    Form.cleanForm();
-    Table.unselectRow();
-    Notify.invalidForm(false);
-    Notify.showEditButtons(false);
-}
+filterForm.onchange = () => filterBtn.disabled = false;

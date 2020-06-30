@@ -17,7 +17,7 @@ export class Filter{
         for(let i=1 ; i<keys.length ; i++){
             let btn = document.createElement('button');
             btn.type = "button";
-            btn.classList.add('btn','btn-primary');
+            btn.classList.add('btn','btn-primary','filterBtn');
             btn.innerHTML = normalizedKeys[i];
             btn.id = keys[i]+"Btn";
             btn.onclick = this.filterTableFromButton;
@@ -46,6 +46,10 @@ export class Filter{
             Table.showColumn(index,true);
             document.getElementById('resetBtn').disabled = document.getElementsByClassName('btn-secondary').length == 0;
         }             
+
+        if(document.getElementsByClassName('filterBtn btn-secondary').length == 0){
+            document.getElementById('resetBtn').disabled = true;
+        }
     }        
 
     static filterTableFromTh(e){
@@ -123,6 +127,7 @@ export class Filter{
         })
 
         document.getElementById('resetBtn').disabled = false;
+        document.getElementById('btnFiltrar').disabled = true;
         Table.paintTable(data);
     }
 
@@ -134,5 +139,14 @@ export class Filter{
             }
             else input.value = "";
         });
+    }
+
+    static hideForm(){
+
+        let hideBtn = document.getElementById('hidefilters');
+        let filters = document.getElementById('filterForm');
+
+        filters.style.display = filters.style.display == 'none' ? '' : 'none';
+        hideBtn.innerHTML = hideBtn.innerHTML == 'Ocultar' ? 'Mostrar' : 'Ocultar';
     }
 }
